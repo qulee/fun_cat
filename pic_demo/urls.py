@@ -18,10 +18,12 @@ from django.urls import path
 from django.conf.urls import url, include
 from pic_site import views
 from pic_site import urls as siteURLConf
+from wx_test import views as funcat
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$', views.index),
-    url(r'^pic_site/', include(siteURLConf))
+    url(r'^pic_site/', include(siteURLConf)),
+    url(r'^fun_cat/', funcat.fun_cat),
 ]
