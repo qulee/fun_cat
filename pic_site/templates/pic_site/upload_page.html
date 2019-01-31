@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>upload_page</title>
+    <script src="/static/pic_site/js/jquery-1.11.1.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <h2><a href="/">主页</a></h2>
+    <form action="/pic_site/img_upload/" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="提交" />
+    </form>
+<script type="text/javascript">
+    $('input').after("<br /><br />");
+    $('select').after("<br /><br />");
+</script>
+</body>
+</html>
