@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.core import serializers
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from pic_site import models
 from pic_site.utils import common
@@ -57,3 +57,6 @@ def img_upload(request):
 
 def success(request):
     return render(request, "pic_site/success.html")
+
+def just_test(request):
+    return JsonResponse({'code': '0', 'message': 'success'})
