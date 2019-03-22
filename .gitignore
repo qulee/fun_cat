@@ -10,6 +10,7 @@ __pycache__/
 # self_demo
 /statics
 nohup.out
+.gitignore
 
 # Distribution / packaging
 .Python
