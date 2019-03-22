@@ -27,7 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'qulee.ltd',
-    'www.qulee.ltd'
+    'www.qulee.ltd',
+    '123.56.18.180',
+    'localhost',
+    '127.0.0.1'
 ]
 
 
@@ -48,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',

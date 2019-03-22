@@ -5,6 +5,10 @@ from django.views.decorators.csrf import csrf_exempt
 from pic_site import models
 from pic_site.utils import common
 from pic_site.forms.upload import UploadImgForm
+import logging
+import random
+import json
+
 
 # index page
 def index(request):
@@ -12,12 +16,13 @@ def index(request):
     img_size = models.Size.objects.all()
     img_color = models.Color.objects.all()
     img_url = models.Images.objects.all()
-    return render(request, 'pic_site/xiquIndex.html',{
-        'img_style':img_style,
-        'img_size':img_size,
-        'img_color':img_color,
-        'img_url':img_url,
+    return render(request, 'pic_site/xiquIndex.html', {
+        'img_style': img_style,
+        'img_size': img_size,
+        'img_color': img_color,
+        'img_url': img_url,
     })
+
 
 # ajax post
 @csrf_exempt
@@ -33,6 +38,7 @@ def tag_list(request):
         return HttpResponse(json_data, content_type="application/json")
     else:
         return HttpResponse("error")
+
 
 def img_upload(request):
     if request.method == 'POST':
@@ -55,8 +61,42 @@ def img_upload(request):
         form = UploadImgForm()
     return render(request, "pic_site/upload_page.html", {'form': form})
 
+
 def success(request):
     return render(request, "pic_site/success.html")
 
+
 def just_test(request):
-    return JsonResponse({'code': '0', 'message': 'success'})
+    callback = request.GET.get('callback')
+    postBody = request.POST
+    # json_result = json.loads(postBody)
+    logging.debug(callback)
+    if callback == '' or callback == None:
+        return JsonResponse({'code': '0', 'message': 'success', 'obj': postBody})
+    else:
+        return HttpResponse("%s%s" % (callback, "({'code': '0', 'message': 'success'})"))
+
+
+def t_accounts(request):
+    accounts = {
+        "Message": "获取账套列表成功.",
+        "Success": True,
+        "Data": [{
+            "AccountId": 1,
+            "AccountName": "默认套账"
+        }]
+    }
+    return JsonResponse(accounts)
+
+
+def t_add(request):
+    postBody = request.POST
+    logging.debug('-------------------------------')
+    logging.debug(postBody)
+
+    return JsonResponse({"Message": "创建订单成功.", "Success": True, "Data": "RX0000201903200274"})
+
+
+def t_update(request):
+    postBody = request.POST
+    logging.debug(postBody)
