@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pic_site',
     'wx_test',
+    'uwsgi_test',
+    'oms_test',
 ]
 
 MIDDLEWARE = [
