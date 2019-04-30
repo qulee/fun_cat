@@ -20,6 +20,7 @@ from pic_site import views
 from pic_site import urls as siteURLConf
 from wx_test import views as funcat
 from uwsgi_test import urls as uwsgi_url
+from oms_test import urls as oms_test
 
 
 urlpatterns = [
@@ -28,5 +29,5 @@ urlpatterns = [
     url(r'^pic_site/', include(siteURLConf)),
     url(r'^fun_cat/', funcat.fun_cat),
     url(r'^uwsgi/', include(uwsgi_url)),
-    url(r'^oms_test/', include(uwsgi_url)),
+    url(r'^oms_test/', include(oms_test)),
 ]
